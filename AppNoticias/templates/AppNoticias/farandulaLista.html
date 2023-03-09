@@ -1,0 +1,35 @@
+{% extends 'AppNoticias/padre.html' %}
+
+{% block content %}
+
+<br>
+<br>
+<br>
+<div class="container text-center">
+    <h1>farandulas</h1>
+</div>
+
+<br>
+<div class="container text-center">
+    <div class="row">
+            {% for farandula in farandulas %}
+            <div class="col-sm-6 align-items-center">
+                <h4>{{farandula.titulo}}</h4>
+                <div class="card-body">
+                <a href="{% url 'farandula' farandula.id %}"><img src="{{farandula.imagenNoticias.url}}" class="" width="300px"></a>
+                    <div class="card-body">
+                    <a href="{% url 'farandula' farandula.id %}"><i class="bi bi-eye">&ensp;&ensp;</i></a>
+                    {% if user.id == farandula.usuario.id %}
+                    <a href="{% url 'editar_farandula' farandula.id %}"><i class="bi bi-pencil-fill">&ensp;&ensp;</i></a>
+                    <a href="{% url 'eliminar_farandula' farandula.id %}"><i class="bi bi-trash text-danger"></i></a>
+                    <br>
+                    <br>
+                    {% endif %} 
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

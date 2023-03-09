@@ -1,0 +1,42 @@
+{% extends 'AppNoticias/padre.html' %}
+
+{% block content %}
+
+<br>
+<br>
+
+<div class="container">
+
+<p><h4>{{ciencia.titulo}}</h4></p>
+
+{% if ciencia.imagenNoticias %}
+    <p><img src="{{ciencia.imagenNoticias.url}}" alt=""></p>
+{% endif %}
+<p><h4>Nota o Noticia:</h4></p>
+<p>{{ciencia.descripcion}}</p>
+<p><h4>Fecha y hora de Publicación:</h4></p>
+<p>{{ciencia.fechaPublicacion}}</p>
+<p><h4>Email del Publicador:</h4></p>
+<p>{{ciencia.emailContacto}}</p>
+
+</div>
+<br>
+<div class="container">
+    <h4>Comentarios...</h4>
+    <br>
+    <div class="container">
+    {% if not ciencia.comentarios.all %}
+        No han comentado esta noticia de ciencia
+    {% else %}
+        {% for comentario in ciencia.comentarios.all %}
+        <p><strong>{{comentario.nombre}}</strong></p>
+        <p>{{comentario.mensaje}}</p>
+        <p><small>{{comentario.fechaComentario}}</small></p>
+        <hr>
+        {% endfor %}
+    {% endif %}
+    <a href="{% url 'comentario' ciencia.pk %}">Agrega un Comentario</a>
+    </div>
+</div>
+<br>
+{% endblock %}

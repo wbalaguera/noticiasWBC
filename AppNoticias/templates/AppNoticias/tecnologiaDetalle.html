@@ -1,0 +1,42 @@
+{% extends 'AppNoticias/padre.html' %}
+
+{% block content %}
+
+<br>
+<br>
+
+<div class="container">
+
+<p><h4>{{tecnologia.titulo}}</h4></p>
+
+{% if tecnologia.imagenNoticias %}
+    <p><img src="{{tecnologia.imagenNoticias.url}}" alt=""></p>
+{% endif %}
+<p><h4>Nota o Noticia:</h4></p>
+<p>{{tecnologia.descripcion}}</p>
+<p><h4>Fecha y hora de Publicación:</h4></p>
+<p>{{tecnologia.fechaPublicacion}}</p>
+<p><h4>Email del Publicador:</h4></p>
+<p>{{tecnologia.emailContacto}}</p>
+
+</div>
+<br>
+<div class="container">
+    <h4>Comentarios...</h4>
+    <br>
+    <div class="container">
+    {% if not tecnologia.comentarios.all %}
+        No han comentado esta noticia de tecnologia
+    {% else %}
+        {% for comentario in tecnologia.comentarios.all %}
+        <p><strong>{{comentario.nombre}}</strong></p>
+        <p>{{comentario.mensaje}}</p>
+        <p><small>{{comentario.fechaComentario}}</small></p>
+        <hr>
+        {% endfor %}
+    {% endif %}
+    <a href="{% url 'comentario' tecnologia.pk %}">Agrega un Comentario</a>
+    </div>
+</div>
+<br>
+{% endblock %}

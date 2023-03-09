@@ -1,0 +1,149 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300&family=Nunito:wght@200&family=Poppins:wght@300&family=Quattrocento&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+    <title>News_Blog_Colombia</title>
+
+    <style>
+      .antSpan{font-size: 21px; font-style: italic; color: blue;}
+      .antContai{width: 100px; text-align: center; display: flex; align-items: center;}
+      .antContai2{width: 220px; text-align: center; display: flex; align-items: center;}
+      .btn-primary{color: #cb0a0a; background-color: #0d6efd; border-color: #0d6efd;}
+      .bg-dark{background-color: #848687!important; text-align: center!important;}
+      .navbar-expand-sm .navbar-collapse{display: flex!important; flex-basis: auto; align-items: center!important;}
+    </style>     
+</head>
+<body style="position: relative; padding-bottom: 5em; min-height: 100vh;">
+  <img src="" alt="">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark py-2 fixed-top">
+      <div class="container">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+          <div class="collapse navbar-collapse" id="navmenu">
+              <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'padre' %}"><span class="antSpan">INICIO</span></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'deportes' %}"><span class="antSpan">Deportes</span></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'politicas' %}"><span class="antSpan">Politica</span></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'farandulas' %}"><span class="antSpan">Farandula</span></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'tecnologias' %}"><span class="antSpan">Tecnologia</span></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'ciencias' %}"><span class="antSpan">Ciencia</span></a>
+                </li>
+                <div class="container"></div>
+                {% if request.user.is_authenticated %}
+                <div class="container">
+                <li class="antContai2">
+                  <a class="nav-link"><span class="antSpan">Hola: <strong>{{request.user.first_name}}</strong></span></a>
+                </li>
+                </div>
+                <div class="container">
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'editar_perfil' %}"><span class="antSpan">Perfil</span></a>
+                </li>
+                </div>
+                <div class="container">
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'logout' %}"><span class="antSpan">Logout</span></a>
+                </li>
+                </div>
+                <div class="container">
+                <li class="antContai">
+                  <a class="nav-link" href="{% url 'acerca_del_editor' %}"><span class="antSpan">El Editor</span></a>
+                </li>
+                </div>
+                {% else %}
+                <div class="container">
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'login' %}"><span class="antSpan">Login</span></a>
+                </li>
+                </div>
+                <div class="container">
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'registro' %}"><span class="antSpan">Registrate</span></a>
+                </li> 
+                </div>         
+              {% endif %}
+           </ul>
+          </div>
+      </div>     
+  </nav>
+      {% block content %}
+
+    <!-- Inicio -->
+<br>
+<br>
+<br>
+<br>
+<section id="home" class="text-dark p-5 p-lg-0 pt-lg-5 text-center text-sm-start">
+  <div class="container text-center">
+    <div class="">
+        <div>
+            <h2>Bienvenido (a) al <span class="text-primary">Block de las Noticias mas Relevantes</span></h2>
+        </div>
+    </div>
+</div>
+
+</section>
+
+
+    <!-- Link anexar Nocias -->
+
+    <section class="p-5 p-lg-0 pt-lg-5 text-center text-sm-start">
+      <div class="container">
+          <div class="">
+              <div class="text-center">
+                  <p class="lead my-4">
+                    Deseas Agregar Contenido a Nuestro Block Noticioso...?
+                  </p>
+                  <br>
+                  <a href="{% url 'nueva' %}"><button type="submit" class="btn btn-primary">Agregalo Acá</button></a>
+              </div>
+          </div>
+      </div>
+  </section>
+
+
+      {% endblock %}
+
+
+  <!-- Footer -->
+
+  <footer class="p-3 bg-dark" style="position: absolute; bottom: 0; width: 100%;">
+      <div class="container">
+          <p class="antSpan">Copyright &copy; 2023 - Wilson Balaguera Cubillos</p>
+          <a href="{% url 'padre' %}" class="position-absolute bottom-0 end-0 p-4">
+              <i class="bi bi-arrow-up-circle h1"></i>
+          </a>
+      </div>
+  </footer>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+  crossorigin="anonymous"></script>
+
+</body>
+</html>

@@ -1,0 +1,42 @@
+{% extends 'AppNoticias/padre.html' %}
+
+{% block content %}
+
+<br>
+<br>
+
+<div class="container">
+
+<p><h4>{{farandula.titulo}}</h4></p>
+
+{% if farandula.imagenNoticias %}
+    <p><img src="{{farandula.imagenNoticias.url}}" alt=""></p>
+{% endif %}
+<p><h4>Nota o Noticia:</h4></p>
+<p>{{farandula.descripcion}}</p>
+<p><h4>Fecha y hora de Publicación:</h4></p>
+<p>{{farandula.fechaPublicacion}}</p>
+<p><h4>Email del Publicador:</h4></p>
+<p>{{farandula.emailContacto}}</p>
+
+</div>
+<br>
+<div class="container">
+    <h4>Comentarios...</h4>
+    <br>
+    <div class="container">
+    {% if not farandula.comentarios.all %}
+        No han comentado esta noticia de farandula
+    {% else %}
+        {% for comentario in farandula.comentarios.all %}
+        <p><strong>{{comentario.nombre}}</strong></p>
+        <p>{{comentario.mensaje}}</p>
+        <p><small>{{comentario.fechaComentario}}</small></p>
+        <hr>
+        {% endfor %}
+    {% endif %}
+    <a href="{% url 'comentario' farandula.pk %}">Agrega un Comentario</a>
+    </div>
+</div>
+<br>
+{% endblock %}

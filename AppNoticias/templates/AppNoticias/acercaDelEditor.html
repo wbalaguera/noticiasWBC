@@ -1,0 +1,38 @@
+
+{% extends 'AppNoticias/padre.html' %}
+{% load static %}
+
+{% block content %}
+
+    <div class="container">
+        <br>
+        <br>
+       <h2 class="text-center text-dark">
+           Acerca del Editor
+       </h2>
+       <br>
+       <div class="row g-4">
+           <div class="col-md-6 col-lg-3">
+               <div class="card bg-success">
+                    <div class="card-body text-center">
+                    <img src="{% static 'imagenes/Will_Editor.jpeg' %}" class="rounded-circle mb-3" width="150px">
+                    <h3 class="card-title mb-3">Wilson Edilberto Balaguera</h3>
+                    <p class="card-text">Python Developer Jr.</p>
+                    <p class="card-text">Sigueme en:</p>
+                    <a href="https://github.com/johannesgperez"><i class="bi bi-github text-dark mx-1"></i></a>
+                    <a href="https://www.linkedin.com/in/johannesperez/"><i class="bi bi-linkedin text-dark mx-1"></i></a>
+                    </div>
+               </div>
+           </div>
+           <div class="col">
+            <div class="">
+                 <div class="text-center">
+                    <p><h4>Un Cordial Saludo..!!!</h4></p>
+                    <p><h5>Mi nombre es Wilson Balaguera, Líder en Analítica de Datos con profesión en Ingeniería de Sistemas, con experiencia en el área de telecomunicaciones y entidades financieras, encargado de colocar con metodologías agiles hallazgos a Nivel Directivo y Operativo. Dentro de mi rol me desempeño como traductor de casos de negocio, en modelos de datos escalables que demuestren resultados por medio de estadística descriptiva, correlaciones, pareto y georefenciacion en Dashboard publicados a toda la compañia.</h5></p>
+                    <p><h5>Gracias por visitar mi blog y no dejes de seguirme en mis redes sociales.</h5></p>
+                 </div>
+            </div>
+        </div>
+       </div>
+    </div>
+{% endblock %}
