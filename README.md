@@ -11,7 +11,7 @@ user:wilsonbalaguera
 pwd:coder1234
 
 Usuario Editor
-usuario que puede editar eliminar ver 
+usuario puede entrar auna noticia y agregar comentarios ala noticia
 user:editor
 pwd:coder1234
 
